@@ -18,11 +18,20 @@
   color:#1F2937;
   cursor:pointer;
 }
-body{
-  font-family: system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
-  color:var(--ink);
-  background: radial-gradient(1200px 800px at 20% 0%, #FFFFFF 0%, var(--bg) 60%, #EAF0FF 100%);
-  line-height:1.6;
+:root{
+  /* Paleta */
+  --brand:#134D9A;     /* primária */
+  --brand-2:#0B72E7;   /* hover */
+  --ink:#0F172A;       /* texto principal (slate-900) */
+  --ink-muted:#475569; /* texto secundário */
+  --bg:#F5F7FF;        /* fundo suave */
+  --panel:#FFFFFF;     /* painéis/cards */
+  --line:#E5E7EB;      /* borda leve */
+  --focus:#FFB703;     /* foco/acessibilidade */
+
+  /* Espaços e raios */
+  --radius:12px;
+  --space:16px;
 }
 .filters button.day{           /* botões dos dias (se quiser circulares) */
   width:36px;                  /* largura = altura */
