@@ -49,7 +49,3 @@
   border-color:#134D9A;
   color:#fff;
 }
-.filters button:focus-visible{
-  outline:3px solid #FFB703;
-  outline-offset:2px;
-}
