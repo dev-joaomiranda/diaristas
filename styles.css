@@ -49,3 +49,4 @@
   border-color:#134D9A;
   color:#fff;
 }
+.embed-wrap{background:var(--panel);border:1px solid var(--line);border-radius:var(--radius);padding:16px}
