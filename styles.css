@@ -1,27 +1,41 @@
-.filters{display:flex;gap:8px;flex-wrap:wrap;margin:12px 0}
+.filters{
+  display:flex;
+  gap:8px;
+  flex-wrap:wrap;
+  align-items:center;          /* alinha verticalmente */
+}
+
 .filters button{
-  appearance:none;
-  padding:8px 12px;
-  min-width:44px;
-  height:36px;
-  border:1px solid #CBD5E1;      /* borda visível */
+  display:inline-flex;         /* centraliza conteúdo */
+  align-items:center;
+  justify-content:center;
+  height:36px;                 /* mesma altura para todos */
+  line-height:1;
+  padding:0 12px;              /* padding padrão */
+  border:1px solid #CBD5E1;
   border-radius:8px;
-  background:#F8FAFC;             /* fundo claro visível */
-  color:#1F2937;                   /* texto visível */
+  background:#F8FAFC;
+  color:#1F2937;
   cursor:pointer;
 }
-.filters button:hover{ background:#E2E8F0 }
-.filters button:focus-visible{
-  outline:3px solid #FFB703;      /* acessibilidade */
-  outline-offset:2px;
+
+.filters button.day{           /* botões dos dias (se quiser circulares) */
+  width:36px;                  /* largura = altura */
+  padding:0;                   /* remove padding para ficar círculo */
+  border-radius:999px;
 }
+
+.filters button.all{           /* “Todos” */
+  min-width:64px;              /* largura confortável, mas alinhado */
+}
+
+.filters button:hover{ background:#E2E8F0 }
 .filters button.active{
   background:#134D9A;
   border-color:#134D9A;
-  color:#fff;                     /* contraste no ativo */
+  color:#fff;
 }
-/* opção circular */
-.filters button{
-  width:36px;height:36px;padding:0;border-radius:999px;
-  border:1px solid #CBD5E1;background:#F8FAFC;color:#1F2937;
+.filters button:focus-visible{
+  outline:3px solid #FFB703;
+  outline-offset:2px;
 }
