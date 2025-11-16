@@ -81,12 +81,3 @@ render();
 const todos = document.createElement("button");
 todos.textContent = "Todos";
 todos.className = `all ${filtroDia === null ? "active" : ""}`;
-
-// botões dos dias
-DIAS.forEach(d => {
-  const btn = document.createElement("button");
-  btn.textContent = d;
-  btn.className = `day ${filtroDia === d ? "active" : ""}`;
-  btn.onclick = () => { filtroDia = d; render(); };
-  filtros.appendChild(btn);
-});
