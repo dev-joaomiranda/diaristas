@@ -20,3 +20,8 @@
   border-color:#134D9A;
   color:#fff;                     /* contraste no ativo */
 }
+/* opção circular */
+.filters button{
+  width:36px;height:36px;padding:0;border-radius:999px;
+  border:1px solid #CBD5E1;background:#F8FAFC;color:#1F2937;
+}
