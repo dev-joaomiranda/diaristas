@@ -1,51 +1,31 @@
-.filters{
-  display:flex;
-  gap:8px;
-  flex-wrap:wrap;
-  align-items:center;          /* alinha verticalmente */
-}
-
-.filters button{
-  display:inline-flex;         /* centraliza conteúdo */
-  align-items:center;
-  justify-content:center;
-  height:36px;                 /* mesma altura para todos */
-  line-height:1;
-  padding:0 12px;              /* padding padrão */
-  border:1px solid #CBD5E1;
-  border-radius:8px;
-  background:#F8FAFC;
-  color:#1F2937;
-  cursor:pointer;
-}
 :root{
-  /* Paleta */
-  --brand:#134D9A;     /* primária */
-  --brand-2:#0B72E7;   /* hover */
-  --ink:#0F172A;       /* texto principal (slate-900) */
-  --ink-muted:#475569; /* texto secundário */
-  --bg:#F5F7FF;        /* fundo suave */
-  --panel:#FFFFFF;     /* painéis/cards */
-  --line:#E5E7EB;      /* borda leve */
-  --focus:#FFB703;     /* foco/acessibilidade */
 
-  /* Espaços e raios */
-  --radius:12px;
-  --space:16px;
-}
-.filters button.day{           /* botões dos dias (se quiser circulares) */
-  width:36px;                  /* largura = altura */
-  padding:0;                   /* remove padding para ficar círculo */
-  border-radius:999px;
+--brand:#134D9A; --line:#E5E7EB; --font:'Inter',system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif;
+
 }
 
-.filters button.all{           /* “Todos” */
-  min-width:64px;              /* largura confortável, mas alinhado */
-}
+html,body{margin:0;font-family:var(--font);color:#0F172A}
 
-.filters button:hover{ background:#E2E8F0 }
-.filters button.active{
-  background:#134D9A;
-  border-color:#134D9A;
-  color:#fff;
+.wrap{max-width:920px;margin:auto;padding:16px}
+
+.filters{display:grid;gap:12px;grid-template-columns:1fr;align-items:end;margin:8px 0 16px}
+
+label span, legend{font-weight:600;margin-bottom:4px;display:block}
+
+select,input{height:38px;padding:6px 10px;border:1px solid var(--line);border-radius:8px;width:100%}
+
+.days{display:flex;gap:8px;flex-wrap:wrap}
+
+.day{height:36px;min-width:44px;padding:0 10px;border:1px solid var(--line);border-radius:999px;background:#F8FAFC;cursor:pointer}
+
+.day.active{background:var(--brand);border-color:var(--brand);color:#fff}
+
+.cards{list-style:none;padding:0;margin:0;display:grid;gap:12px;grid-template-columns:repeat(auto-fit,minmax(240px,1fr))}
+
+.card{border:1px solid var(--line);border-radius:12px;padding:12px;background:#fff}
+
+@media (min-width:720px){
+
+.filters{grid-template-columns:220px 1fr 280px}
+
 }

@@ -1,83 +1,47 @@
-// Dados fictícios — ajuste como quiser
-const diaristas = [
-  {
-    nome: "Ana Souza",
-    cidade: "Fortaleza",
-    funcoes: ["Diarista", "Passadeira"],
-    disponibilidade: ["Seg", "Qua", "Sex"]
-  },
-  {
-    nome: "Beatriz Lima",
-    cidade: "Caucaia",
-    funcoes: ["Cozinheira", "Diarista"],
-    disponibilidade: ["Ter", "Qui", "Sab"]
-  },
-  {
-    nome: "Carla Nascimento",
-    cidade: "Maracanaú",
-    funcoes: ["Babá", "Cuidadora de idoso"],
-    disponibilidade: ["Seg", "Ter", "Qui"]
-  },
-  {
-    nome: "Daniela Alves",
-    cidade: "Fortaleza",
-    funcoes: ["Diarista"],
-    disponibilidade: ["Qua", "Sex", "Dom"]
-  }
-];
+const form = document.getElementById('filtros');
 
-// Dias usados no filtro
-const DIAS = ["Seg", "Ter", "Qua", "Qui", "Sex", "Sab", "Dom"];
+const list = document.getElementById('lista');
 
-let filtroDia = null;
+const dayButtons = form.querySelectorAll('.day');
 
-function renderFiltros() {
-  const wrap = document.getElementById("filtros");
-  wrap.innerHTML = "";
-  const todos = document.createElement("button");
-  todos.textContent = "Todos";
-  todos.className = filtroDia === null ? "active" : "";
-  todos.onclick = () => { filtroDia = null; render(); };
-  wrap.appendChild(todos);
+const hiddenDay = form.elements['dia'];
 
-  DIAS.forEach(d => {
-    const btn = document.createElement("button");
-    btn.textContent = d;
-    btn.className = filtroDia === d ? "active" : "";
-    btn.onclick = () => { filtroDia = d; render(); };
-    wrap.appendChild(btn);
-  });
+form.addEventListener('input', filtrar);
+
+dayButtons.forEach(btn=>{
+
+btn.addEventListener('click', ()=>{
+
+dayButtons.forEach(b=> b.classList.toggle('active', b === btn));
+
+hiddenDay.value = [btn.dataset.day]= todos
+
+filtrar();
+
+});
+
+});
+
+function normalizar(s){ return s.trim().toLowerCase(); }
+
+function filtrar(){
+
+const exp = normalizar(form.elements['exp'].value);
+
+const dia = normalizar(form.elements['dia'].value);
+
+const local = normalizar(form.elements['local'].value);
+
+for(const card of list.children){
+
+const hasExp = !exp || card.dataset.exp.includes(exp);
+
+const hasDia = !dia || card.dataset.dias.split(',').includes(dia);
+
+const hasLocal = !local || card.dataset.local.includes(local);
+
+[card.style] = (hasExp && hasDia && hasLocal) ? '' : 'none';
+
 }
 
-function cardHtml(p) {
-  const funcoes = p.funcoes.map(f => `<span class="tag">${f}</span>`).join("");
-  const dias = p.disponibilidade.map(d => `<span class="tag">${d}</span>`).join("");
-  return `
-    <article class="card" aria-label="${p.nome}">
-      <h3>${p.nome}</h3>
-      <p class="muted">${p.cidade}</p>
-      <p>${funcoes}</p>
-      <p><strong>Disponibilidade:</strong> ${dias}</p>
-    </article>
-  `;
 }
-
-function renderLista() {
-  const lista = document.getElementById("lista");
-  const dados = filtroDia
-    ? diaristas.filter(p => p.disponibilidade.includes(filtroDia))
-    : diaristas;
-  lista.innerHTML = dados.map(cardHtml).join("");
-}
-
-function render() {
-  renderFiltros();
-  renderLista();
-}
-
-render();
-
-// botão "Todos"
-const todos = document.createElement("button");
-todos.textContent = "Todos";
-todos.className = `all ${filtroDia === null ? "active" : ""}`;

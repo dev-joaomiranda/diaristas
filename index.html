@@ -1,36 +1,129 @@
 <!doctype html>
+
 <html lang="pt-BR">
+
 <head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Aurora Diaristas</title>
-  <link rel="stylesheet" href="./styles.css">
-  <style>
-    .container{max-width:860px;margin:32px auto;padding:0 16px}
-    .grid{display:grid;grid-template-columns:1fr;gap:12px}
-    @media(min-width:720px){.grid{grid-template-columns:1fr 1fr}}
-    .card{border:1px solid #afb1b5;border-radius:10px;padding:14px}
-    .tag{display:inline-block;margin:2px 6px 0 0;padding:4px 8px;border-radius:999px;background:#EFF6FF;color:#1E40AF;font-size:12px}
-    .filters{display:flex;gap:8px;flex-wrap:wrap;margin:12px 0}
-    .filters button{padding:8px 10px;border:1px solid #E5E7EB;border-radius:8px;background:#fff;cursor:pointer}
-    .filters button.active{background:#134D9A;color:#fff;border-color:#134D9A}
-    .muted{color:#6B7280;font-size:14px}
-  </style>
+
+<meta charset="utf-8">
+
+<meta name="viewport" content="width=device-width,initial-scale=1">
+
+<title>Profissionais</title>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap" rel="stylesheet">
+
+<link rel="stylesheet" href="styles.css">
+
 </head>
+
 <body>
-  <main class="container">
-    <h1>Lista de profissionais e seus dias disponíveis:</h1>
 
-    <section>
-      <div id="filtros" class="filters" role="group" aria-label="Filtros por dia"></div>
-    </section>
+<main class="wrap">
 
-    <section aria-labelledby="lista-title">
-      <h2 id="lista-title">Profissionais</h2>
-      <div id="lista" class="grid"></div>
-    </section>
-  </main>
+<h1>Profissionais cadastrados</h1>
 
-  <script src="./app.js"></script>
+<form id="filtros" class="filters" aria-label="Filtros">
+
+<label>
+
+Experiência
+
+<select name="exp">
+
+<option value="">Todas</option>
+
+<option value="faxina">Faxina</option>
+
+<option value="passadeira">Passadeira</option>
+
+<option value="cozinheira">Cozinheira</option>
+
+<option value="babá">Babá</option>
+
+</select>
+
+</label>
+
+<fieldset>
+
+<legend>Dias</legend>
+
+<div class="days">
+
+<button type="button" class="day active" data-day="">Todos</button>
+
+<button type="button" class="day" data-day="seg">Seg</button>
+
+<button type="button" class="day" data-day="ter">Ter</button>
+
+<button type="button" class="day" data-day="qua">Qua</button>
+
+<button type="button" class="day" data-day="qui">Qui</button>
+
+<button type="button" class="day" data-day="sex">Sex</button>
+
+</div>
+
+<input type="hidden" name="dia" value="">
+
+</fieldset>
+
+<label>
+
+Cidade/Bairro
+
+<input name="local" type="search" placeholder="Ex.: Osasco ou Jardim Ângela">
+
+</label>
+
+</form>
+
+<ul id="lista" class="cards" aria-live="polite">
+
+<li class="card" data-exp="faxina,passadeira" data-dias="seg,qua" data-local="butantã sp">
+
+<strong>Ana Souza</strong>
+
+<div>Experiência: Faxina, Passadeira</div>
+
+<div>Dias: Seg, Qua</div>
+
+<div>Reside: Butantã, SP</div>
+
+</li>
+
+<li class="card" data-exp="cozinheira" data-dias="ter,sex" data-local="osasco sp">
+
+<strong>Carla Nascimento</strong>
+
+<div>Experiência: Cozinheira</div>
+
+<div>Dias: Ter, Sex</div>
+
+<div>Reside: Osasco, SP</div>
+
+</li>
+
+<li class="card" data-exp="babá" data-dias="seg,ter,qui" data-local="jardim ângela sp">
+
+<strong>Luiza Alves</strong>
+
+<div>Experiência: Babá</div>
+
+<div>Dias: Seg, Ter, Qui</div>
+
+<div>Reside: Jardim Ângela, SP</div>
+
+</li>
+
+</ul>
+
+</main>
+
+<script src="app.js"></script>
+
 </body>
+
 </html>
