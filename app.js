@@ -1,43 +1,74 @@
-// Espera o documento HTML carregar completamente antes de rodar o script
+// Espera o documento HTML carregar completamente
 document.addEventListener("DOMContentLoaded", () => {
 
-    // 1. Seleciona todos os botões de filtro
+    // Seleciona todos os botões e cartões
     const filterButtons = document.querySelectorAll(".filter-btn");
-    
-    // 2. Seleciona todos os cartões de profissionais
     const professionalCards = document.querySelectorAll(".profissional-card");
 
-    // 3. Adiciona um "ouvinte" de clique para cada botão
+    // -----------------------------------------------------------------
+    // NOVO: Função para formatar o texto dos dias
+    // -----------------------------------------------------------------
+    function formatarDias(disponibilidadeStr) {
+        // Usa Regex para encontrar os dias (Seg, Ter, Qua, etc.)
+        const diasRegex = /(Seg|Ter|Qua|Qui|Sex|Sab|Dom)/g;
+        
+        // ".match()" cria um array com os dias encontrados: ["Seg", "Qua", "Sex"]
+        const diasArray = disponibilidadeStr.match(diasRegex);
+        
+        // Se encontrou dias, junta o array com ", "
+        if (diasArray) {
+            return diasArray.join(', ');
+        }
+        
+        // Se algo der errado, só retorna o texto original
+        return disponibilidadeStr;
+    }
+
+    // -----------------------------------------------------------------
+    // NOVO: Loop para preencher a disponibilidade formatada
+    // -----------------------------------------------------------------
+    professionalCards.forEach(card => {
+        // Encontra o <p> da disponibilidade dentro do cartão
+        const pElement = card.querySelector('.availability-text');
+        
+        if (pElement) {
+            // Pega a disponibilidade "crua" (ex: "SegQuaSex") do data-attribute
+            const disponibilidade = card.dataset.availability;
+            
+            // Formata o texto (ex: "Seg, Qua, Sex")
+            const textoFormatado = formatarDias(disponibilidade);
+            
+            // Insere o HTML final no elemento
+            // (O innerHTML é usado para manter a tag <strong>)
+            pElement.innerHTML = `<strong>Disponibilidade:</strong> ${textoFormatado}`;
+        }
+    });
+
+    // -----------------------------------------------------------------
+    // CÓDIGO ANTIGO: Lógica para filtrar ao clicar nos botões
+    // -----------------------------------------------------------------
     filterButtons.forEach(button => {
         button.addEventListener("click", () => {
             
-            // Pega o dia do atributo "data-day" do botão clicado
             const selectedDay = button.dataset.day;
 
-            // --- Atualiza o visual do botão ativo ---
-            // Remove a classe 'active' de todos os botões
+            // Atualiza o visual do botão ativo
             filterButtons.forEach(btn => btn.classList.remove("active"));
-            // Adiciona a classe 'active' apenas no botão que foi clicado
             button.classList.add("active");
 
-            // --- Lógica de Filtragem ---
-            // Passa por cada cartão de profissional
+            // Lógica de Filtragem
             professionalCards.forEach(card => {
-                // Pega os dias disponíveis do atributo "data-availability"
                 const availability = card.dataset.availability;
 
-                // Compara o dia selecionado com a disponibilidade do cartão
                 if (selectedDay === "Todos") {
-                    // Se "Todos" for clicado, mostra todos os cartões
                     card.style.display = "block";
                 } else if (availability.includes(selectedDay)) {
-                    // Se a disponibilidade INCLUI o dia selecionado, mostra o cartão
                     card.style.display = "block";
                 } else {
-                    // Senão, esconde o cartão
                     card.style.display = "none";
                 }
             });
         });
     });
+
 });

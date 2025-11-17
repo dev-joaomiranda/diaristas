@@ -1,53 +1,62 @@
-/* Estilos gerais */
+
 body {
-    font-family: Arial, sans-serif;
-    background-color: #f4f4f4;
+    /* NOVO: Fonte no estilo Notion */
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+    background-color: #f7f7f7; /* Um cinza mais suave, como o Notion */
     margin: 0;
     padding: 20px;
+    color: #333;
+    -webkit-font-smoothing: antialiased; /* Deixa a fonte mais nítida */
+    -moz-osx-font-smoothing: grayscale;
 }
 
 .container {
     max-width: 800px;
     margin: 0 auto;
     background-color: #ffffff;
-    padding: 20px;
+    padding: 20px 40px; /* Mais preenchimento lateral */
     border-radius: 8px;
-    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+    border: 1px solid #eee;
 }
 
 h1 {
-    font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
-    color: #333;
-    text-align: center;
+    font-family: 'Inter', sans-serif;
+    color: #111;
+    text-align: left; /* Trocado de 'center' para 'left' */
+    font-weight: 700; /* Mais grosso */
+    margin-bottom: 25px;
 }
 
 /* Estilos dos Filtros */
 .filter-container {
     display: flex;
-    justify-content: center;
+    justify-content: flex-start; /* Alinhado à esquerda */
     flex-wrap: wrap;
-    margin-bottom: 25px;
+    margin-bottom: 30px;
     gap: 10px;
 }
 
 .filter-btn {
     padding: 8px 16px;
     font-size: 14px;
-    border: 1px solid #ccc;
-    background-color: #f9f9f9;
+    font-family: 'Inter', sans-serif; /* Garantir a fonte nos botões */
+    border: 1px solid #ddd;
+    background-color: #fff;
     color: #555;
-    border-radius: 20px; /* Bordas arredondadas como na imagem */
+    border-radius: 6px; /* Menos redondo, mais "Notion" */
     cursor: pointer;
-    transition: all 0.3s ease;
+    transition: all 0.2s ease;
 }
 
 .filter-btn:hover {
-    background-color: #e0e0e0;
+    background-color: #f5f5f5;
+    border-color: #bbb;
 }
 
 /* Estilo do botão ATIVO */
 .filter-btn.active {
-    background-color: #007bff; /* Azul do botão "Todos" */
+    background-color: #007bff;
     color: #ffffff;
     border-color: #007bff;
 }
@@ -55,33 +64,38 @@ h1 {
 /* Estilos dos Cards de Profissional */
 #lista-profissionais {
     display: grid;
-    grid-template-columns: 1fr; /* Uma coluna */
-    gap: 20px;
+    grid-template-columns: 1fr;
+    gap: 15px; /* Espaço entre os cards */
 }
 
 .profissional-card {
     border: 1px solid #eee;
-    padding: 15px;
-    border-radius: 5px;
+    padding: 20px;
+    border-radius: 8px;
     background-color: #fff;
-    /* Adicionamos uma transição para o 'display' não funcionar, 
-       mas ajuda em outras propriedades se você quiser animar.
-       O display: none/block será instantâneo. */
+    transition: box-shadow 0.2s ease;
+}
+
+.profissional-card:hover {
+     box-shadow: 0 4px 10px rgba(0,0,0,0.08);
 }
 
 .profissional-card h3 {
-    font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+    font-family: 'Inter', sans-serif;
+    font-weight: 700; /* Mais grosso */
     margin-top: 0;
     margin-bottom: 10px;
     color: #222;
+    font-size: 1.25rem; /* 20px */
 }
 
 .profissional-card p {
     margin: 5px 0;
-    color: #666;
-    line-height: 1.4;
+    color: #555;
+    line-height: 1.5;
 }
 
 .profissional-card p strong {
     color: #333;
+    font-weight: 700; /* Garantir que "Disponibilidade" seja forte */
 }
