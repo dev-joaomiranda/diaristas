@@ -1,31 +1,87 @@
-:root{
-
---brand:#134D9A; --line:#E5E7EB; --font:'Inter',system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif;
-
+/* Estilos gerais */
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f4f4f4;
+    margin: 0;
+    padding: 20px;
 }
 
-html,body{margin:0;font-family:var(--font);color:#0F172A}
+.container {
+    max-width: 800px;
+    margin: 0 auto;
+    background-color: #ffffff;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+}
 
-.wrap{max-width:920px;margin:auto;padding:16px}
+h1 {
+    font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+    color: #333;
+    text-align: center;
+}
 
-.filters{display:grid;gap:12px;grid-template-columns:1fr;align-items:end;margin:8px 0 16px}
+/* Estilos dos Filtros */
+.filter-container {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    margin-bottom: 25px;
+    gap: 10px;
+}
 
-label span, legend{font-weight:600;margin-bottom:4px;display:block}
+.filter-btn {
+    padding: 8px 16px;
+    font-size: 14px;
+    border: 1px solid #ccc;
+    background-color: #f9f9f9;
+    color: #555;
+    border-radius: 20px; /* Bordas arredondadas como na imagem */
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
 
-select,input{height:38px;padding:6px 10px;border:1px solid var(--line);border-radius:8px;width:100%}
+.filter-btn:hover {
+    background-color: #e0e0e0;
+}
 
-.days{display:flex;gap:8px;flex-wrap:wrap}
+/* Estilo do botão ATIVO */
+.filter-btn.active {
+    background-color: #007bff; /* Azul do botão "Todos" */
+    color: #ffffff;
+    border-color: #007bff;
+}
 
-.day{height:36px;min-width:44px;padding:0 10px;border:1px solid var(--line);border-radius:999px;background:#F8FAFC;cursor:pointer}
+/* Estilos dos Cards de Profissional */
+#lista-profissionais {
+    display: grid;
+    grid-template-columns: 1fr; /* Uma coluna */
+    gap: 20px;
+}
 
-.day.active{background:var(--brand);border-color:var(--brand);color:#fff}
+.profissional-card {
+    border: 1px solid #eee;
+    padding: 15px;
+    border-radius: 5px;
+    background-color: #fff;
+    /* Adicionamos uma transição para o 'display' não funcionar, 
+       mas ajuda em outras propriedades se você quiser animar.
+       O display: none/block será instantâneo. */
+}
 
-.cards{list-style:none;padding:0;margin:0;display:grid;gap:12px;grid-template-columns:repeat(auto-fit,minmax(240px,1fr))}
+.profissional-card h3 {
+    font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+    margin-top: 0;
+    margin-bottom: 10px;
+    color: #222;
+}
 
-.card{border:1px solid var(--line);border-radius:12px;padding:12px;background:#fff}
+.profissional-card p {
+    margin: 5px 0;
+    color: #666;
+    line-height: 1.4;
+}
 
-@media (min-width:720px){
-
-.filters{grid-template-columns:220px 1fr 280px}
-
+.profissional-card p strong {
+    color: #333;
 }
